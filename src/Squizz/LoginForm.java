@@ -38,7 +38,7 @@ public class LoginForm extends javax.swing.JFrame {
         jLabel5 = new javax.swing.JLabel();
         jTextField1 = new javax.swing.JTextField();
         jPasswordField1 = new javax.swing.JPasswordField();
-        jButton1 = new javax.swing.JButton();
+        jButtonCancel = new javax.swing.JButton();
         jButton2 = new javax.swing.JButton();
         jLabelRegister = new javax.swing.JLabel();
 
@@ -118,10 +118,20 @@ public class LoginForm extends javax.swing.JFrame {
         jPasswordField1.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jPasswordField1.setForeground(new java.awt.Color(228, 241, 254));
 
-        jButton1.setBackground(new java.awt.Color(217, 30, 24));
-        jButton1.setFont(new java.awt.Font("David Libre", 3, 18)); // NOI18N
-        jButton1.setForeground(new java.awt.Color(255, 255, 255));
-        jButton1.setText("Cancel");
+        jButtonCancel.setBackground(new java.awt.Color(217, 30, 24));
+        jButtonCancel.setFont(new java.awt.Font("David Libre", 3, 18)); // NOI18N
+        jButtonCancel.setForeground(new java.awt.Color(255, 255, 255));
+        jButtonCancel.setText("Cancel");
+        jButtonCancel.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jButtonCancelMouseClicked(evt);
+            }
+        });
+        jButtonCancel.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonCancelActionPerformed(evt);
+            }
+        });
 
         jButton2.setBackground(new java.awt.Color(0, 0, 204));
         jButton2.setFont(new java.awt.Font("David Libre", 3, 18)); // NOI18N
@@ -156,7 +166,7 @@ public class LoginForm extends javax.swing.JFrame {
                         .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(jLabelRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
                             .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                                 .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
@@ -177,7 +187,7 @@ public class LoginForm extends javax.swing.JFrame {
                     .addComponent(jPasswordField1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(34, 34, 34)
                 .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 37, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addComponent(jLabelRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
@@ -215,7 +225,7 @@ public class LoginForm extends javax.swing.JFrame {
 
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
       
-        System.exit(0);
+        this.dispose();
         
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
@@ -228,6 +238,14 @@ public class LoginForm extends javax.swing.JFrame {
         rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //  it choose certain operation and in this it close the function JFrame.EXIT_ON_CLOSE — Exit the application
         this.dispose(); //JFrame.dispose(); causes the JFrame window to be destroyed and cleaned up by the operating system.
     }//GEN-LAST:event_jLabelRegisterMouseClicked
+
+    private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
+       System.exit(0);
+    }//GEN-LAST:event_jButtonCancelActionPerformed
+
+    private void jButtonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelMouseClicked
+      System.exit(0);
+    }//GEN-LAST:event_jButtonCancelMouseClicked
 
     /**
      * @param args the command line arguments
@@ -265,8 +283,8 @@ public class LoginForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
+    private javax.swing.JButton jButtonCancel;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;

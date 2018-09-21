@@ -155,7 +155,7 @@
                           <Group type="103" groupAlignment="0" attributes="0">
                               <Component id="jLabelRegister" pref="198" max="32767" attributes="0"/>
                               <Group type="102" attributes="0">
-                                  <Component id="jButton1" min="-2" pref="87" max="-2" attributes="0"/>
+                                  <Component id="jButtonCancel" min="-2" pref="87" max="-2" attributes="0"/>
                                   <EmptySpace max="32767" attributes="0"/>
                                   <Component id="jButton2" min="-2" pref="87" max="-2" attributes="0"/>
                               </Group>
@@ -185,7 +185,7 @@
                   </Group>
                   <EmptySpace min="-2" pref="34" max="-2" attributes="0"/>
                   <Group type="103" groupAlignment="3" attributes="0">
-                      <Component id="jButton1" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
+                      <Component id="jButtonCancel" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                       <Component id="jButton2" alignment="3" min="-2" pref="37" max="-2" attributes="0"/>
                   </Group>
                   <EmptySpace type="separate" max="-2" attributes="0"/>
@@ -254,7 +254,7 @@
             </Property>
           </Properties>
         </Component>
-        <Component class="javax.swing.JButton" name="jButton1">
+        <Component class="javax.swing.JButton" name="jButtonCancel">
           <Properties>
             <Property name="background" type="java.awt.Color" editor="org.netbeans.beaninfo.editors.ColorEditor">
               <Color blue="18" green="1e" red="d9" type="rgb"/>
@@ -267,6 +267,10 @@
             </Property>
             <Property name="text" type="java.lang.String" value="Cancel"/>
           </Properties>
+          <Events>
+            <EventHandler event="mouseClicked" listener="java.awt.event.MouseListener" parameters="java.awt.event.MouseEvent" handler="jButtonCancelMouseClicked"/>
+            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButtonCancelActionPerformed"/>
+          </Events>
         </Component>
         <Component class="javax.swing.JButton" name="jButton2">
           <Properties>
