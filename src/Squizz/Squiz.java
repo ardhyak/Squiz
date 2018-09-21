@@ -9,7 +9,7 @@ package Squizz;
  *
  * @author user
  */
-public class Sacred_Bazar {
+public class Squiz {
 
     /**
      * @param args the command line arguments
