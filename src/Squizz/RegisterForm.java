@@ -30,7 +30,6 @@ public class RegisterForm extends javax.swing.JFrame {
     private void initComponents() {
 
         jFormattedTextField1 = new javax.swing.JFormattedTextField();
-        dateChooserDialog1 = new datechooser.beans.DateChooserDialog();
         jPanel1 = new javax.swing.JPanel();
         jLabelClose = new javax.swing.JLabel();
         jLabel2 = new javax.swing.JLabel();
@@ -292,7 +291,6 @@ public class RegisterForm extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private datechooser.beans.DateChooserDialog dateChooserDialog1;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButtonRegister;
     private javax.swing.JFormattedTextField jFormattedTextField1;
