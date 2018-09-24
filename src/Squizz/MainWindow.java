@@ -4,8 +4,17 @@
  * and open the template in the editor.
  */
 package Squizz;
+import static Squizz.quizer.is_logged;
+import static Squizz.quizer.sqe;
 import acm.graphics.GLabel;
 import acm.program.GraphicsProgram;
+import java.awt.Color;
+import java.awt.event.MouseEvent;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+
 /**
  *
  * @author user
@@ -13,30 +22,92 @@ import acm.program.GraphicsProgram;
 
 public class MainWindow extends GraphicsProgram{
     
-    private int height = 1000;
-    private int width = 1800;
+    private final int height = 1000;
+    private final int width = 1800;
+        
+    private GLabel login = new GLabel("Login / Signup");        //  Login / Signup Button
+    private GLabel user = new GLabel("");         //  if User has logged in
+    private GLabel topic = new GLabel("Quizers");
+            
+    private GLabel subject[] = new GLabel[20];
+    private Subject _subject[] = new Subject[20];
+            
+    private int num_subs;
+    private ResultSet rs;
     
     @Override
     public void init() {
     
-        setSize(width,height);
-        setLocation(0, 0);
         
-        GLabel login = new GLabel("Login / Signup");        //  Login / Signup Button
-        GLabel user = new GLabel("");         //  if User has logged in
-        
-        GLabel Subject[] = null;
-        
-        
+            setSize(width,height);
+            setLocation(0, 0);
+            addMouseListeners();
+            
+            rs = sqe.select("SELECT id , name FROM subject ");
+            int i=0;
+            
+        try{
+            while(rs.next()){
+                    _subject[i] = new Subject(rs.getInt("id"), rs.getString("name"));
+                    subject[i] = new GLabel(rs.getString("name"));
+                    i++;
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        num_subs = i;
+            
+            //          Set position of all variables
 
+            topic.setLocation(500,50);
+            login.setLocation(1300,50);
+            user.setLocation(1300, 50);
+            for(int j=0;j<num_subs;j++){
+                //subject[i].setFont("");
+                subject[j].setColor(Color.yellow);
+                subject[j].setLocation(300, 300);
+                subject[j].move(0,(j/2)*100);
+                if(j%2!=0){
+                    subject[j].move(400,0);
+                }
+            }
+            
+            
+            //          
+            
+        
     }
     
     @Override
     public void run() {
         
+        add_all();
     }
     
-    public void add_all(){
+    private void add_all(){
+        add(topic);
+        
+        if(is_logged){
+            add(user);
+        }
+        else{
+            add(login);
+        }
+            
+        for(int i=0;i<num_subs;i++){
+           add(subject[i]); 
+        }
+        
+        
+    }
+    
+    @Override
+    public void mouseClicked(MouseEvent e){
+        
+        if(login.contains(e.getX(), e.getY())){
+            new LoginForm();
+        }
+            
         
     }
     
