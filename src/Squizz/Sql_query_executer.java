@@ -39,6 +39,7 @@ public class Sql_query_executer {
     }
     
     public ResultSet select(String sql){
+        System.out.println(sql);
         try {
             return this.stm.executeQuery(sql);
         } catch (SQLException ex) {
@@ -48,6 +49,7 @@ public class Sql_query_executer {
     }
     
     public void update(String sql) {
+        System.out.println(sql);
         try {
             this.stm.executeUpdate(sql);
         } catch (SQLException ex) {
