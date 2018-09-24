@@ -6,7 +6,20 @@
 
 package Squizz;
 
+import static Squizz.quizer.gamer;
+import static Squizz.quizer.sqe;
+import com.mysql.cj.protocol.Resultset;
+import java.awt.HeadlessException;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
+import javax.swing.JButton;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JPasswordField;
+import javax.swing.JTextField;
 
 /**
  *
@@ -17,7 +30,9 @@ public class LoginForm extends javax.swing.JFrame {
     /** Creates new form LoginForm */
     public LoginForm() {
         initComponents();
+        
         this.setLocationRelativeTo(null); //centre form in the screen
+        this.setVisible(true);
     }
 
     /** This method is called from within the constructor to
@@ -137,6 +152,11 @@ public class LoginForm extends javax.swing.JFrame {
         jButton2.setFont(new java.awt.Font("David Libre", 3, 18)); // NOI18N
         jButton2.setForeground(new java.awt.Color(255, 255, 255));
         jButton2.setText("Login");
+        jButton2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton2ActionPerformed(evt);
+            }
+        });
 
         jLabelRegister.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         jLabelRegister.setForeground(new java.awt.Color(255, 255, 255));
@@ -240,12 +260,51 @@ public class LoginForm extends javax.swing.JFrame {
     }//GEN-LAST:event_jLabelRegisterMouseClicked
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
-       System.exit(0);
+       this.setVisible(false);
+       this.dispose();
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void jButtonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelMouseClicked
-      System.exit(0);
+      this.setVisible(false);
+      this.dispose();
     }//GEN-LAST:event_jButtonCancelMouseClicked
+    
+    public LoginForm(JButton jButton2, JButton jButtonCancel, JLabel jLabel2, JLabel jLabel4, JLabel jLabel5, JLabel jLabelClose, JLabel jLabelMin, JLabel jLabelRegister, JPanel jPanel1, JPanel jPanel2, JPasswordField jPasswordField1, JTextField jTextField1) throws HeadlessException {
+        this.jButton2 = jButton2;
+        this.jButtonCancel = jButtonCancel;
+        this.jLabel2 = jLabel2;
+        this.jLabel4 = jLabel4;
+        this.jLabel5 = jLabel5;
+        this.jLabelClose = jLabelClose;
+        this.jLabelMin = jLabelMin;
+        this.jLabelRegister = jLabelRegister;
+        this.jPanel1 = jPanel1;
+        this.jPanel2 = jPanel2;
+        this.jPasswordField1 = jPasswordField1;
+        this.jTextField1 = jTextField1;
+    }
+
+    private void jButton2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton2ActionPerformed
+        System.out.println(jPasswordField1.getText());
+        ResultSet rs = sqe.select("SELECT * FROM users WHERE name = '"+jTextField1.getText()+"' AND password = '"+jPasswordField1.getText()+"';");
+        
+        try {
+            if(rs.next()){
+                gamer.setter(rs.getInt("id"), rs.getString("name"), rs.getString("password"),rs.getString("email"),rs.getString("phone"), rs.getString("type"), rs.getString("registration_num"), rs.getBoolean("is_certified"));
+                quizer.is_logged = true;
+                this.setVisible(false);
+                this.dispose();
+            }
+            else{
+                jTextField1.setText("");
+                jPasswordField1.setText("");
+                new Error().run("Invalid entry");
+            }
+        } catch (SQLException ex) {
+            Logger.getLogger(LoginForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
+    }//GEN-LAST:event_jButton2ActionPerformed
 
     /**
      * @param args the command line arguments
