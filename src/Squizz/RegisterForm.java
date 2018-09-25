@@ -5,7 +5,13 @@
  */
 package Squizz;
 
+import static Squizz.quizer.gamer;
 import static Squizz.quizer.sqe;
+import com.mysql.cj.protocol.Resultset;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JFrame;
 
 /**
@@ -306,9 +312,35 @@ public class RegisterForm extends javax.swing.JFrame {
 
     private void jButtonRegisterActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegisterActionPerformed
         
-        sqe.select("SELECT * FROM users WHERE registration_num = '"+);
-
-// TODO add your handling code here:
+        try {
+            ResultSet rs = sqe.select("SELECT * FROM users WHERE registration_num = '"+jTextField4.getText()+"' ;");
+            
+            if(rs.next()){
+                new Error().run("User Already exist");
+            }
+            else{
+                
+                sqe.update(" INSERT INTO `users` ( `name`, `password`, `email`, `phone`, `type`, `registration_num` ) VALUES ('"+ jTextField2.getText() + "' , '"+jPasswordField3.getText()+"','" + jTextField3.getText() + " ' , ' " + jTextField1.getText() + " ' , 'teacher ' , '" + jTextField4.getText() +" ' ); ");
+                
+                ResultSet rse = sqe.select("SELECT * FROM users WHERE registration_num = '"+jTextField4.getText()+"' ;");
+                System.out.println("kira");
+                try {
+                    if(rse.next()){
+                        System.out.println("hi");
+                        gamer.setter(rse.getInt("id"), rse.getString("name"), rse.getString("password"),rse.getString("email"),rse.getString("phone"), rse.getString("type"), rse.getString("registration_num"), rse.getBoolean("is_certified"));
+                        System.out.println("hello");
+                        quizer.is_logged = true;        
+                        this.setVisible(false);
+                        this.dispose();
+                        System.out.println("closed");
+                    }   } catch (SQLException ex) {
+                        Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
+                    }
+            } 
+        } catch (SQLException ex) {
+            Logger.getLogger(RegisterForm.class.getName()).log(Level.SEVERE, null, ex);
+        }
+        
     }//GEN-LAST:event_jButtonRegisterActionPerformed
 
     private void jButtonRegister1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRegister1ActionPerformed

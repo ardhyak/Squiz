@@ -99,10 +99,12 @@ public class MainWindow extends GraphicsProgram{
     @Override
     public void run() {
         
+        while(true){
+        
         add_all();
-    
+
+        }
     }
-    
     private void add_all(){
            add(back);
         add(topic);
