@@ -30,6 +30,9 @@ public class MainWindow extends GraphicsProgram{
     private GLabel login = new GLabel("Login / Signup");        //  Login / Signup Button
     private GLabel user = new GLabel("");         //  if User has logged in
     private GLabel topic = new GLabel("Quizers");
+    private GLabel Subject = new GLabel("");
+    private GLabel quiz = new GLabel("");
+    
     
      GRect back = null;
             
@@ -99,15 +102,17 @@ public class MainWindow extends GraphicsProgram{
     @Override
     public void run() {
         
-        while(true){
+       
         
         add_all();
 
-        }
+        
     }
     private void add_all(){
            add(back);
         add(topic);
+        add(Subject);
+        add(quiz);
         
         if(is_logged){
             add(user);

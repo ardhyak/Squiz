@@ -5,6 +5,8 @@
  */
 package Squizz;
 
+import static Squizz.quizer.sqe;
+
 /**
  *
  * @author user
