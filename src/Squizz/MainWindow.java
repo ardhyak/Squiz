@@ -7,8 +7,10 @@ package Squizz;
 import static Squizz.quizer.is_logged;
 import static Squizz.quizer.sqe;
 import acm.graphics.GLabel;
+import acm.graphics.GRect;
 import acm.program.GraphicsProgram;
 import java.awt.Color;
+import java.awt.Font;
 import java.awt.event.MouseEvent;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -28,6 +30,8 @@ public class MainWindow extends GraphicsProgram{
     private GLabel login = new GLabel("Login / Signup");        //  Login / Signup Button
     private GLabel user = new GLabel("");         //  if User has logged in
     private GLabel topic = new GLabel("Quizers");
+    
+     GRect back = null;
             
     private GLabel subject[] = new GLabel[20];
     private Subject _subject[] = new Subject[20];
@@ -38,7 +42,14 @@ public class MainWindow extends GraphicsProgram{
     @Override
     public void init() {
     
-        
+         // to set background            
+             back = new  GRect(1800,1000);
+             back.setLocation(0,0);
+             back.setColor(Color.MAGENTA);
+             back.setFilled(true);
+             
+             
+             
             setSize(width,height);
             setLocation(0, 0);
             addMouseListeners();
@@ -50,22 +61,29 @@ public class MainWindow extends GraphicsProgram{
             while(rs.next()){
                     _subject[i] = new Subject(rs.getInt("id"), rs.getString("name"));
                     subject[i] = new GLabel(rs.getString("name"));
+                    subject[i].setFont((new Font("Georgia", Font.BOLD, (int)(20))));
                     i++;
                 }
             } catch (SQLException ex) {
                 Logger.getLogger(MainWindow.class.getName()).log(Level.SEVERE, null, ex);
             }
         num_subs = i;
-            
+        
+            //          change font
+            topic.setFont((new Font("Georgia", Font.BOLD, (int)(50))));
+            login.setFont((new Font("Georgia", Font.ITALIC, (int)(20))));
+ 
+           
+        
             //          Set position of all variables
 
-            topic.setLocation(500,50);
-            login.setLocation(1300,50);
-            user.setLocation(1300, 50);
+            topic.setLocation(600,50);
+            login.setLocation(1200,50);
+            user.setLocation(1200, 50);
             for(int j=0;j<num_subs;j++){
                 //subject[i].setFont("");
-                subject[j].setColor(Color.yellow);
-                subject[j].setLocation(300, 300);
+                subject[j].setColor(Color.YELLOW);
+                subject[j].setLocation(250, 250);
                 subject[j].move(0,(j/2)*100);
                 if(j%2!=0){
                     subject[j].move(400,0);
@@ -82,9 +100,11 @@ public class MainWindow extends GraphicsProgram{
     public void run() {
         
         add_all();
+    
     }
     
     private void add_all(){
+           add(back);
         add(topic);
         
         if(is_logged){
@@ -105,6 +125,7 @@ public class MainWindow extends GraphicsProgram{
     public void mouseClicked(MouseEvent e){
         
         if(login.contains(e.getX(), e.getY())){
+            
             new LoginForm();
         }
             
@@ -112,3 +133,4 @@ public class MainWindow extends GraphicsProgram{
     }
     
 }
+ 
