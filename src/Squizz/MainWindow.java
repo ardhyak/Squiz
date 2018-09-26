@@ -99,13 +99,14 @@ public class MainWindow extends GraphicsProgram{
     @Override
     public void run() {
         
-        while(true){
+        
         
         add_all();
 
-        }
+        
     }
-    private void add_all(){
+    
+    public void add_all(){
            add(back);
         add(topic);
         
@@ -128,7 +129,13 @@ public class MainWindow extends GraphicsProgram{
         
         if(login.contains(e.getX(), e.getY())){
             
-            new LoginForm();
+            new LoginForm(this).setVisible(true);
+        }
+        
+        for(int i=0;i<num_subs;i++){
+            if(subject[i].contains(e.getX(),e.getY())){
+                ;
+            }
         }
             
         
