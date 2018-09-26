@@ -34,30 +34,85 @@ public class Person {
     Person() {
     }
     
-    public void setter(int id,String name,String pass,String email,String phone,String type,String registration_number, Boolean is_cert) {
+    public void set_id(int id){
+        //String name,String pass,String email,String phone,String type,String registration_number, Boolean is_cert) {
     
         this.id = id;
+    }
+    public void set_name(String name){
+        
         this.name = name;
-        this.email = email;
+    }
+    public void set_pass(String pass){
+        
+         this.pass = pass;
+    }
+    
+    
+    public void set_email(String email){
+        
+       this.email = email;
+    }
+       
+    public void set_phone(String phone){
+        
         this.phone = phone;
-        this.pass = pass;
+    }
+       
+    public  void set_type(String type){
+        
+             this.type = type;
+    }
+    public void  set_registration_number(String registration_number){
+        
         this.registration_number = registration_number;
-        this.type = type;
+    }
+    
+    public void set_is_certified(Boolean is_certified){
         this.is_certified = is_certified;
         
     }
     
-    public void getter(int id,String name,String pass,String email,String phone,String type,String registration_number, Boolean is_cert) {
+        public int get_id() {
+
+           return (this.id);
+        }
+       
+       public String get_name(){
+           
+           return (this.name);
+       }
     
-        this.id = id;
-        this.name = name;
-        this.email = email;
-        this.phone = phone;
-        this.pass = pass;
-        this.registration_number = registration_number;
-        this.type = type;
-        this.is_certified = is_certified;
+    
+       public String get_email(){
+           
+           return(this.email);
+       }
+       
+       public String get_phone(){
+           
+           return(this.phone);
+       }
+       
+        public String get_pass(){
+            
+            return(this.pass);
+        }
         
+        public String get_registration_number(){
+            
+        return(this.registration_number);
+        }
+        
+        public String get_type(){
+            
+            return(this.type);
+        }
+        
+        public Boolean get_is_certified(){
+            
+           return(this.is_certified);
+        }
     }
     
 }
