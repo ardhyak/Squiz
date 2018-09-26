@@ -26,11 +26,11 @@ import javax.swing.JTextField;
  * @author user
  */
 public class LoginForm extends javax.swing.JFrame {
-
+    private MainWindow m_w;
     /** Creates new form LoginForm */
-    public LoginForm() {
+    public LoginForm(MainWindow mw) {
         initComponents();
-        
+        this.m_w=mw;
         this.setLocationRelativeTo(null); //centre form in the screen
         this.setVisible(true);
     }
@@ -182,14 +182,16 @@ public class LoginForm extends javax.swing.JFrame {
                             .addComponent(jTextField1)
                             .addComponent(jPasswordField1, javax.swing.GroupLayout.DEFAULT_SIZE, 170, Short.MAX_VALUE)))
                     .addGroup(jPanel2Layout.createSequentialGroup()
-                        .addGap(142, 142, 142)
-                        .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabelRegister, javax.swing.GroupLayout.DEFAULT_SIZE, 198, Short.MAX_VALUE)
-                            .addGroup(jPanel2Layout.createSequentialGroup()
-                                .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                                .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                        .addGap(57, 57, 57)
+                        .addComponent(jButtonCancel, javax.swing.GroupLayout.PREFERRED_SIZE, 100, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(69, 69, 69)
+                        .addComponent(jButton2, javax.swing.GroupLayout.PREFERRED_SIZE, 87, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 27, Short.MAX_VALUE)))
+                .addContainerGap(60, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                .addGap(0, 0, Short.MAX_VALUE)
+                .addComponent(jLabelRegister, javax.swing.GroupLayout.PREFERRED_SIZE, 283, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(45, 45, 45))
             .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                 .addGroup(jPanel2Layout.createSequentialGroup()
                     .addGap(42, 42, 42)
@@ -246,26 +248,35 @@ public class LoginForm extends javax.swing.JFrame {
     private void jLabelCloseMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelCloseMouseClicked
       
         this.dispose();
+        m_w.removeAll();
+        m_w.add_all();
+        
         
     }//GEN-LAST:event_jLabelCloseMouseClicked
 
     private void jLabelRegisterMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jLabelRegisterMouseClicked
         
-        RegisterForm rgf = new RegisterForm();
+        RegisterForm rgf = new RegisterForm(m_w);
         rgf.setVisible(true);
         rgf.pack(); //The pack method sizes the frame so that all its contents are at or above their preferred sizes.
         rgf.setLocationRelativeTo(null);  // for centre
         rgf.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE); //  it choose certain operation and in this it close the function JFrame.EXIT_ON_CLOSE — Exit the application
+        m_w.removeAll();
+        m_w.add_all();
         this.dispose(); //JFrame.dispose(); causes the JFrame window to be destroyed and cleaned up by the operating system.
     }//GEN-LAST:event_jLabelRegisterMouseClicked
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
        this.setVisible(false);
+        m_w.removeAll();
+        m_w.add_all();
        this.dispose();
     }//GEN-LAST:event_jButtonCancelActionPerformed
 
     private void jButtonCancelMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonCancelMouseClicked
       this.setVisible(false);
+        m_w.removeAll();
+        m_w.add_all();
       this.dispose();
     }//GEN-LAST:event_jButtonCancelMouseClicked
     
@@ -294,6 +305,9 @@ public class LoginForm extends javax.swing.JFrame {
                 quizer.is_logged = true;
                 this.setVisible(false);
                 this.dispose();
+                
+        m_w.removeAll();
+        m_w.add_all();
             }
             else{
                 jTextField1.setText("");
@@ -336,7 +350,7 @@ public class LoginForm extends javax.swing.JFrame {
         /* Create and display the form */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                new LoginForm().setVisible(true);
+    //            new LoginForm().setVisible(true);
             }
         });
     }

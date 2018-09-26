@@ -13,7 +13,7 @@ public class quizer {
     
             //          Control Variables
     
-    public static Sql_query_executer sqe = new Sql_query_executer("root","","jdbc:mysql://localhost:3306/squiz");
+    public static Sql_query_executer sqe = new Sql_query_executer("root","Gen123@","jdbc:mysql://localhost:3306/squiz");
     public static Boolean is_logged = false;
     public static Person gamer = new Person();
     
