@@ -30,6 +30,9 @@ public class MainWindow extends GraphicsProgram{
     private GLabel login = new GLabel("Login / Signup");        //  Login / Signup Button
     private GLabel user = new GLabel("");         //  if User has logged in
     private GLabel topic = new GLabel("Quizers");
+    private GLabel Subject = new GLabel("");
+    private GLabel quiz = new GLabel("");
+    
     
      GRect back = null;
             
@@ -47,6 +50,7 @@ public class MainWindow extends GraphicsProgram{
              back.setLocation(0,0);
              back.setColor(Color.MAGENTA);
              back.setFilled(true);
+        
              
              
              
@@ -99,8 +103,6 @@ public class MainWindow extends GraphicsProgram{
     @Override
     public void run() {
         
-        
-        
         add_all();
 
         
@@ -108,7 +110,6 @@ public class MainWindow extends GraphicsProgram{
     
     public void add_all(){
            add(back);
-        add(topic);
         
         if(is_logged){
             add(user);
@@ -121,6 +122,9 @@ public class MainWindow extends GraphicsProgram{
            add(subject[i]); 
         }
         
+        add(topic);
+        add(Subject);
+        add(quiz);
         
     }
     
