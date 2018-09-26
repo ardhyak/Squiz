@@ -34,11 +34,25 @@ public class Person {
     Person() {
     }
     
-    public void set_id(int id){
+   
+    public void setter(int id,String name,String pass,String email,String phone,String type,String registration_number, Boolean is_cert) {
+ 
+        this.id = id;
+        this.name = name;
+        this.email = email;
+        this.phone = phone;
+        this.pass = pass;
+        this.registration_number = registration_number;
+        this.type = type;
+        this.is_certified = is_certified;
+ 
+    }
+     public void set_id(int id){
         //String name,String pass,String email,String phone,String type,String registration_number, Boolean is_cert) {
     
         this.id = id;
     }
+    
     public void set_name(String name){
         
         this.name = name;

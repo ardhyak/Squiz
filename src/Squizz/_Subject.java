@@ -29,10 +29,21 @@ public class _Subject {
           this.id = id;
           this.name = name;
       }
-      
-       public void getter(int id,String name){
+      public void set_id(int id){
           this.id = id;
+          
+      }
+      
+      public void set_name(String name){
           this.name = name;
+      }
+      
+      
+       public int get_id(int id){
+       return(this.id);
+      }
+      public String get_name(String name){
+      return(this.name);
       }
     
 }

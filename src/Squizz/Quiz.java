@@ -34,10 +34,28 @@ public class Quiz {
           
           
       }
+        public void set_id(int id){
+            
+            this.id = id;
+        }
+        public void set_name(String name){
+            this.name = name;
+            
+        }
+        public void set_subjectID(int subjectID){
+            this.subjectID = subjectID;
+        }
         
-        public void getter(int id,String name,int subjectID){
-          this.id = id;
-          this.name = name;
-          this.subjectID = subjectID;
-      }
-}
+        public int get_id(){
+          return(this.id = id);
+        }
+        
+        public String get_name(){
+            return(this.name);
+        }
+        public int get_subjectID(){
+            return(this.subjectID);
+        }
+        
+  }
+
