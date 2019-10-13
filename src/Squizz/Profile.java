@@ -14,7 +14,7 @@ import javax.swing.JFrame;
 public class Profile extends javax.swing.JFrame {
 
     /**
-     * Creates new form Profile
+     * Creates new form Profile		//for new profile
      */
     public Profile() {
         initComponents();
